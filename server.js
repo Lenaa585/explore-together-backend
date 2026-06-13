@@ -2,37 +2,40 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-// CORS es vital: Permite que tu frontend de GitHub Pages hable con este servidor seguro
-app.use(cors()); 
+app.use(cors());
 
-// Esta es tu primera ruta de API. Escucha en la dirección /api/buscar
+// Ruta API
 app.get('/api/buscar', (req, res) => {
-    // El servidor lee las variables que el usuario escribió en el HTML
+
     const origen = req.query.origen;
     const destino = req.query.destino;
 
-    // Aquí es donde en el futuro pondremos los cálculos matemáticos reales.
-    // De momento, el servidor responde con este paquete de datos (JSON):
-    res.json({
-        [
-  {
-    compania: "Iberia",
-    precio: "145€"
-  },
-  {
-    compania: "Ryanair",
-    precio: "82€"
-  },
-  {
-    compania: "Vueling",
-    precio: "97€"
-  }
-]
-    });
+    res.json([
+        {
+            compania: "Iberia",
+            origen: origen,
+            destino: destino,
+            precio: "145€"
+        },
+        {
+            compania: "Ryanair",
+            origen: origen,
+            destino: destino,
+            precio: "89€"
+        },
+        {
+            compania: "Vueling",
+            origen: origen,
+            destino: destino,
+            precio: "112€"
+        }
+    ]);
+
 });
 
-// Configuración para que funcione tanto en tu ordenador como en Render
+// Configuración para Render
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
     console.log(`Servidor encendido en el puerto ${PORT}`);
 });
