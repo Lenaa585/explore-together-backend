@@ -14,10 +14,20 @@ app.get('/api/buscar', (req, res) => {
     // Aquí es donde en el futuro pondremos los cálculos matemáticos reales.
     // De momento, el servidor responde con este paquete de datos (JSON):
     res.json({
-        mensaje: "¡Conexión exitosa con el Backend!",
-        origen_recibido: origen,
-        destino_recibido: destino,
-        precio_calculado: "145€"
+        [
+  {
+    compania: "Iberia",
+    precio: "145€"
+  },
+  {
+    compania: "Ryanair",
+    precio: "82€"
+  },
+  {
+    compania: "Vueling",
+    precio: "97€"
+  }
+]
     });
 });
 
